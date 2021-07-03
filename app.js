@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
   });
 });
 
+
+app.listen(process.env.PORT || 5000)
+
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
@@ -27,10 +30,7 @@ mongoose.set('useCreateIndex', true);
 // Connecting to the database
 mongoose.connect(dbConfig.url, { useNewUrlParser: true })
   .then(() => {
-    console.log("Successfully connected to the database");
   }).catch(err => {
-    console.log(err);
-    console.log('Could not connect to the database. Exiting now...');
     process.exit();
   });
 
